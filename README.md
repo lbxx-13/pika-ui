@@ -8,6 +8,8 @@ English · [简体中文](README.zh-CN.md) · [日本語](README.ja.md) · [한�
 
 <p align="center"><strong>Start with the real task. Design the interface clearly. Build it for the project at hand.</strong></p>
 
+<p align="center"><a href="https://pika-ui.mytools.fyi/">Visit the Pika UI website ↗</a></p>
+
 Pika UI is a cross-platform interface design and implementation skill for AI coding agents. It supports the full path from new interfaces and redesigns to screenshot recreation and UI review across web, desktop, mobile, and other software surfaces.
 
 React Bits is an optional source of visual and interaction ideas, not a framework requirement. React projects can evaluate its components when useful; other stacks can adapt the effect to their target platform.
