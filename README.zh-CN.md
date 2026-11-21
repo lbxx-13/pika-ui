@@ -16,20 +16,20 @@ React Bits 是可选的 UI 视觉与交互参考，不是技术栈要求。React
 
 ### 在终端安装
 
-在任意目录运行下面这条命令。它只为 Codex 安装 `pika-ui`，并在所有项目中可用：
+在任意目录运行下面这条命令。它会将 `pika-ui` 全局安装给你选择的 AI 编程 Agent 使用：
 
 ```bash
-npx skills add lbxx-13/pika-ui --skill pika-ui -g -a codex
+npx skills add lbxx-13/pika-ui --skill pika-ui -g
 ```
 
-这个 GitHub 仓库目前是私有仓库。运行命令的电脑必须已经有仓库访问权限，例如已配置 Git 凭据、GitHub CLI 登录或 SSH。若命令询问安装范围或 Agent，请选择全局安装和 Codex。
+这个 GitHub 仓库目前是私有仓库。运行命令的电脑必须已经有仓库访问权限，例如已配置 Git 凭据、GitHub CLI 登录或 SSH。按提示选择要安装到的 Agent。若想指定多个 Agent，可添加 `-a`，例如 `-a codex -a claude-code -a cursor`。
 
 ### 让 Agent 帮你安装
 
-把下面这句话发给能够运行终端命令的 Agent：
+把下面这句话发给任何能够运行终端命令的 AI 编程 Agent：
 
 ```text
-请帮我为 Codex 安装 Pika UI skill，运行：npx skills add lbxx-13/pika-ui --skill pika-ui -g -a codex
+请帮我为当前 AI 编程 Agent 安装 Pika UI skill，运行：npx skills add lbxx-13/pika-ui --skill pika-ui -g
 ```
 
 运行 Agent 的电脑同样需要有这个私有 GitHub 仓库的访问权限。如果 CLI 提示认证失败，先配置 GitHub 访问权限，再重新运行命令。
@@ -40,7 +40,7 @@ npx skills add lbxx-13/pika-ui --skill pika-ui -g -a codex
 npx skills update pika-ui -g
 ```
 
-如果之前是手动 clone 安装的，则运行：
+如果你只为 Codex 手动 clone 安装，则运行：
 
 ```bash
 git -C ~/.codex/skills/pika-ui pull --ff-only
@@ -50,7 +50,7 @@ git -C ~/.codex/skills/pika-ui pull --ff-only
 
 ## 使用 Pika UI
 
-安装后开启一个新的 Codex 对话轮次，使用 `$pika-ui` 显式调用；也可以直接描述任务并说明使用 Pika UI。把相关项目、截图、品牌素材和约束一起提供给它。它会先检查项目现有技术栈，再按任务加载对应指南。
+安装后按需重启或重新加载你的 Agent。如果它支持显式调用 skill，可以按名称调用；否则直接说“请使用 Pika UI skill”并描述任务。提供相关项目、截图、品牌素材和约束，它会先检查现有技术栈，再按任务加载对应指南。
 
 ## 可以用它做什么
 
@@ -64,7 +64,7 @@ git -C ~/.codex/skills/pika-ui pull --ff-only
 ## 示例请求
 
 ```text
-$pika-ui 为这款课程预约产品设计一个可预览的落地页。先根据目标用户和课程内容确定方向，再实现桌面与手机布局。
+用 Pika UI 为这款课程预约产品设计一个可预览的落地页。先根据目标用户和课程内容确定方向，再实现桌面与手机布局。
 ```
 
 ```text

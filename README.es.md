@@ -16,20 +16,20 @@ React Bits es una fuente opcional de ideas visuales y de interacción, no un req
 
 ### Instalar desde la terminal
 
-Ejecuta este comando desde cualquier directorio. Instala solo la skill `pika-ui` para Codex y la deja disponible en todos tus proyectos:
+Ejecuta este comando desde cualquier directorio. Instala globalmente solo la skill `pika-ui` para los agentes de programación con IA que elijas:
 
 ```bash
-npx skills add lbxx-13/pika-ui --skill pika-ui -g -a codex
+npx skills add lbxx-13/pika-ui --skill pika-ui -g
 ```
 
-Este repositorio de GitHub es privado por ahora. El equipo donde ejecutes el comando necesita acceso mediante credenciales de Git, una sesión autenticada de GitHub CLI o SSH. Si aparece una selección, elige Codex e instalación global.
+Este repositorio de GitHub es privado por ahora. El equipo donde ejecutes el comando necesita acceso mediante credenciales de Git, una sesión autenticada de GitHub CLI o SSH. Cuando aparezca la selección, elige los agentes que quieras. Para indicar varios, añade opciones `-a`, por ejemplo `-a codex -a claude-code -a cursor`.
 
 ### Pedir a un agente que la instale
 
-Envía este mensaje a un agente que pueda ejecutar comandos de terminal:
+Envía este mensaje a cualquier agente de programación con IA que pueda ejecutar comandos de terminal:
 
 ```text
-Instala la skill Pika UI para Codex. Ejecuta: npx skills add lbxx-13/pika-ui --skill pika-ui -g -a codex
+Instala la skill Pika UI para mi agente de programación con IA. Ejecuta: npx skills add lbxx-13/pika-ui --skill pika-ui -g
 ```
 
 El equipo que ejecuta el agente también necesita acceso a este repositorio privado de GitHub. Si falla la autenticación, configura primero el acceso a GitHub y vuelve a ejecutar el comando.
@@ -40,7 +40,7 @@ El equipo que ejecuta el agente también necesita acceso a este repositorio priv
 npx skills update pika-ui -g
 ```
 
-Si la instalaste clonando el repositorio manualmente, actualízala así:
+Si la instalaste clonando el repositorio manualmente solo para Codex, actualízala así:
 
 ```bash
 git -C ~/.codex/skills/pika-ui pull --ff-only
@@ -50,7 +50,7 @@ Si usas un `CODEX_HOME` personalizado, sustituye `~/.codex` por tu directorio pr
 
 ## Usar Pika UI
 
-Después de instalarla, inicia un nuevo turno de Codex. Invoca la skill explícitamente con `$pika-ui` o describe la tarea y pide a Codex que use Pika UI. Comparte el proyecto, las capturas, los recursos de marca y las restricciones pertinentes; revisará el stack existente y cargará solo las guías necesarias.
+Después de instalarla, reinicia o vuelve a cargar tu agente si hace falta. Si admite la invocación explícita de skills, llama a Pika UI por su nombre; si no, pídele “Usa la skill Pika UI” y describe la tarea. Comparte el proyecto, las capturas, los recursos de marca y las restricciones pertinentes; revisará el stack y cargará solo las guías necesarias.
 
 ## Qué puedes hacer
 
@@ -64,7 +64,7 @@ Después de instalarla, inicia un nuevo turno de Codex. Invoca la skill explíci
 ## Ejemplos de prompts
 
 ```text
-$pika-ui Diseña una landing page que pueda previsualizar para este producto de reservas de cursos. Define la dirección según el público y el contenido del curso, y crea layouts para escritorio y móvil.
+Diseña con Pika UI una landing page que pueda previsualizar para este producto de reservas de cursos. Define la dirección según el público y el contenido del curso, y crea layouts para escritorio y móvil.
 ```
 
 ```text

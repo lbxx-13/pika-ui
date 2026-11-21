@@ -16,20 +16,20 @@ React Bits is an optional source of visual and interaction ideas, not a framewor
 
 ### Install from the terminal
 
-Run this from any directory. It installs only the `pika-ui` skill for Codex and makes it available across your projects:
+Run this from any directory. It installs only the `pika-ui` skill globally for the agents you select:
 
 ```bash
-npx skills add lbxx-13/pika-ui --skill pika-ui -g -a codex
+npx skills add lbxx-13/pika-ui --skill pika-ui -g
 ```
 
-This repository is private. The command works when your machine already has access to it through Git credentials, GitHub CLI authentication, or SSH. If prompted, choose the Codex agent and global installation.
+This repository is private. The command works when your machine already has access through Git credentials, GitHub CLI authentication, or SSH. Choose your agent when prompted. To install into specific agents without a prompt, add `-a` flags, for example `-a codex -a claude-code -a cursor`.
 
 ### Ask an agent to install it
 
-In an agent that can run terminal commands, send:
+Send this to any agent that can run terminal commands:
 
 ```text
-Please install the Pika UI skill for Codex by running: npx skills add lbxx-13/pika-ui --skill pika-ui -g -a codex
+Please install the Pika UI skill for my AI coding agent by running: npx skills add lbxx-13/pika-ui --skill pika-ui -g
 ```
 
 The machine running the agent still needs access to this private GitHub repository. If the CLI cannot authenticate, configure GitHub access first, then rerun the command.
@@ -40,7 +40,7 @@ The machine running the agent still needs access to this private GitHub reposito
 npx skills update pika-ui -g
 ```
 
-If you installed it by cloning the repository manually instead, update it with:
+For a manual Codex-only clone installation, update it with:
 
 ```bash
 git -C ~/.codex/skills/pika-ui pull --ff-only
@@ -50,7 +50,7 @@ For a custom `CODEX_HOME`, replace `~/.codex` with your Codex home directory.
 
 ## Using Pika UI
 
-Start a new Codex turn after installation. Invoke the skill explicitly with `$pika-ui`, or describe the task in plain language and ask Codex to use Pika UI. Give it the project, screenshot, brand assets, and constraints that matter; it will inspect the existing stack and load only the relevant guides.
+After installation, restart or reload your agent if needed. Invoke the skill by name if your agent supports explicit skill invocation; otherwise, say “Use the Pika UI skill” and describe the task. Share the relevant project, screenshot, brand assets, and constraints. Pika UI will inspect the existing stack and load only the relevant guides.
 
 ## What you can do
 
@@ -64,7 +64,7 @@ Start a new Codex turn after installation. Invoke the skill explicitly with `$pi
 ## Example prompts
 
 ```text
-$pika-ui Design a previewable landing page for this course-booking product. Choose a direction based on its audience and course content, then build desktop and mobile layouts.
+Use Pika UI to design a previewable landing page for this course-booking product. Choose a direction based on its audience and course content, then build desktop and mobile layouts.
 ```
 
 ```text
