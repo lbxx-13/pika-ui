@@ -12,21 +12,45 @@ Pika UI is a cross-platform interface design and implementation skill for AI cod
 
 React Bits is an optional source of visual and interaction ideas, not a framework requirement. React projects can evaluate its components when useful; other stacks can adapt the effect to their target platform.
 
-## Get started
+## Installation
 
-Clone the repository into your Codex skills directory:
+### Install from the terminal
+
+Run this from any directory. It installs only the `pika-ui` skill for Codex and makes it available across your projects:
 
 ```bash
-git clone https://github.com/lbxx-13/pika-ui.git ~/.codex/skills/pika-ui
+npx skills add lbxx-13/pika-ui --skill pika-ui -g -a codex
 ```
 
-If you use a custom `CODEX_HOME`, place the repository at `$CODEX_HOME/skills/pika-ui`. A private repository requires GitHub access configured on your machine. After installation, use `$pika-ui` in a new Codex turn, or describe the task and let the agent route itself through the skill.
+This repository is private. The command works when your machine already has access to it through Git credentials, GitHub CLI authentication, or SSH. If prompted, choose the Codex agent and global installation.
 
-Update an existing installation:
+### Ask an agent to install it
+
+In an agent that can run terminal commands, send:
+
+```text
+Please install the Pika UI skill for Codex by running: npx skills add lbxx-13/pika-ui --skill pika-ui -g -a codex
+```
+
+The machine running the agent still needs access to this private GitHub repository. If the CLI cannot authenticate, configure GitHub access first, then rerun the command.
+
+### Update later
+
+```bash
+npx skills update pika-ui -g
+```
+
+If you installed it by cloning the repository manually instead, update it with:
 
 ```bash
 git -C ~/.codex/skills/pika-ui pull --ff-only
 ```
+
+For a custom `CODEX_HOME`, replace `~/.codex` with your Codex home directory.
+
+## Using Pika UI
+
+Start a new Codex turn after installation. Invoke the skill explicitly with `$pika-ui`, or describe the task in plain language and ask Codex to use Pika UI. Give it the project, screenshot, brand assets, and constraints that matter; it will inspect the existing stack and load only the relevant guides.
 
 ## What you can do
 

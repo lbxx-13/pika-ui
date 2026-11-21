@@ -12,21 +12,45 @@ Pika UI は、AI コーディングエージェント向けのクロスプラッ
 
 React Bits は、ビジュアルやインタラクションを考えるための任意の参考資料であり、技術スタックの指定ではありません。React プロジェクトでは必要に応じてコンポーネントを検討し、それ以外の環境では対象プラットフォームに合わせて効果を実装します。
 
-## はじめる
+## インストール
 
-リポジトリを Codex の skills ディレクトリに clone します。
+### ターミナルからインストール
+
+任意のディレクトリで次のコマンドを実行します。Codex に `pika-ui` だけをインストールし、すべてのプロジェクトで使えるようにします。
 
 ```bash
-git clone https://github.com/lbxx-13/pika-ui.git ~/.codex/skills/pika-ui
+npx skills add lbxx-13/pika-ui --skill pika-ui -g -a codex
 ```
 
-独自の `CODEX_HOME` を使う場合は、`$CODEX_HOME/skills/pika-ui` に配置してください。非公開リポジトリには、マシン上で GitHub にアクセスできる設定が必要です。インストール後、新しい Codex のターンで `$pika-ui` を使うか、作業内容をそのまま伝えてください。
+この GitHub リポジトリは現在非公開です。実行するマシンで Git 認証情報、GitHub CLI のログイン、または SSH を使ってアクセスできる必要があります。確認が表示された場合は、Codex とグローバルインストールを選択してください。
 
-インストール済みの skill を更新する場合：
+### エージェントにインストールを頼む
+
+ターミナルコマンドを実行できるエージェントに、次のように伝えます。
+
+```text
+Codex に Pika UI skill をインストールしてください。次を実行してください: npx skills add lbxx-13/pika-ui --skill pika-ui -g -a codex
+```
+
+エージェントを実行するマシンにも、この非公開 GitHub リポジトリへのアクセス権が必要です。認証エラーが出た場合は GitHub アクセスを設定してから再実行してください。
+
+### 後から更新する
+
+```bash
+npx skills update pika-ui -g
+```
+
+リポジトリを手動で clone してインストールした場合は、次を実行します。
 
 ```bash
 git -C ~/.codex/skills/pika-ui pull --ff-only
 ```
+
+独自の `CODEX_HOME` を使う場合は、`~/.codex` を Codex のホームディレクトリに置き換えてください。
+
+## Pika UI の使い方
+
+インストール後、新しい Codex のターンで `$pika-ui` と入力して明示的に呼び出すか、Pika UI を使うよう作業を伝えてください。関連するプロジェクト、スクリーンショット、ブランド素材、制約を共有すると、既存の技術スタックを確認し、必要なガイドだけを読み込みます。
 
 ## できること
 

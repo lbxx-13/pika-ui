@@ -12,21 +12,45 @@ Pika UI ist ein plattformübergreifender Skill für Interface-Design und Impleme
 
 React Bits ist eine optionale Quelle für visuelle und interaktive Ideen, keine Vorgabe für den Tech-Stack. React-Projekte können passende Komponenten prüfen; andere Stacks setzen den Effekt für ihre Zielplattform um.
 
-## Schnellstart
+## Installation
 
-Klone das Repository in dein Codex-Skills-Verzeichnis:
+### Im Terminal installieren
+
+Führe den folgenden Befehl in einem beliebigen Verzeichnis aus. Er installiert nur den Skill `pika-ui` für Codex und stellt ihn für alle Projekte bereit:
 
 ```bash
-git clone https://github.com/lbxx-13/pika-ui.git ~/.codex/skills/pika-ui
+npx skills add lbxx-13/pika-ui --skill pika-ui -g -a codex
 ```
 
-Bei einem eigenen `CODEX_HOME` gehört das Repository nach `$CODEX_HOME/skills/pika-ui`. Für ein privates Repository muss GitHub auf deinem Rechner erreichbar sein. Verwende nach der Installation in einem neuen Codex-Turn `$pika-ui` oder beschreibe die Aufgabe direkt.
+Dieses GitHub-Repository ist derzeit privat. Der Rechner, auf dem der Befehl läuft, benötigt Zugriff über Git-Zugangsdaten, eine Anmeldung mit GitHub CLI oder SSH. Falls eine Auswahl erscheint, wähle Codex und die globale Installation.
 
-Eine vorhandene Installation aktualisieren:
+### Einen Agenten um die Installation bitten
+
+Sende diese Nachricht an einen Agenten, der Terminalbefehle ausführen kann:
+
+```text
+Bitte installiere den Pika UI Skill für Codex. Führe dazu Folgendes aus: npx skills add lbxx-13/pika-ui --skill pika-ui -g -a codex
+```
+
+Auch der Rechner des Agenten benötigt Zugriff auf dieses private GitHub-Repository. Schlägt die Authentifizierung fehl, richte zuerst den GitHub-Zugriff ein und führe den Befehl erneut aus.
+
+### Später aktualisieren
+
+```bash
+npx skills update pika-ui -g
+```
+
+Wenn du das Repository stattdessen manuell geklont hast, aktualisiere es so:
 
 ```bash
 git -C ~/.codex/skills/pika-ui pull --ff-only
 ```
+
+Bei einem eigenen `CODEX_HOME` ersetzt du `~/.codex` durch dein Codex-Hauptverzeichnis.
+
+## Pika UI verwenden
+
+Starte nach der Installation einen neuen Codex-Turn. Rufe den Skill mit `$pika-ui` ausdrücklich auf oder beschreibe die Aufgabe und bitte Codex, Pika UI zu verwenden. Teile relevante Projekte, Screenshots, Markenmaterialien und Vorgaben mit. Pika UI prüft den vorhandenen Tech-Stack und lädt nur die passenden Leitfäden.
 
 ## Was du damit tun kannst
 

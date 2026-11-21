@@ -12,21 +12,45 @@ Pika UI는 AI 코딩 에이전트를 위한 크로스 플랫폼 UI 설계 및 �
 
 React Bits는 선택적으로 참고할 수 있는 시각 및 인터랙션 자료이며, 특정 기술 스택을 요구하지 않습니다. React 프로젝트에서는 필요할 때 컴포넌트를 검토하고, 다른 스택에서는 효과를 대상 플랫폼에 맞게 구현합니다.
 
-## 시작하기
+## 설치
 
-저장소를 Codex skills 디렉터리에 복제합니다.
+### 터미널에서 설치
+
+어느 디렉터리에서든 아래 명령을 실행하세요. Codex에 `pika-ui` 스킬만 설치하고 모든 프로젝트에서 사용할 수 있게 합니다.
 
 ```bash
-git clone https://github.com/lbxx-13/pika-ui.git ~/.codex/skills/pika-ui
+npx skills add lbxx-13/pika-ui --skill pika-ui -g -a codex
 ```
 
-사용자 지정 `CODEX_HOME`을 쓰는 경우 저장소를 `$CODEX_HOME/skills/pika-ui`에 두세요. 비공개 저장소에는 로컬 GitHub 접근 설정이 필요합니다. 설치 후 새 Codex 턴에서 `$pika-ui`를 사용하거나 작업을 설명하면 됩니다.
+이 GitHub 저장소는 현재 비공개입니다. 명령을 실행하는 컴퓨터에 Git 자격 증명, GitHub CLI 로그인 또는 SSH를 통한 저장소 접근 권한이 있어야 합니다. 설치 범위나 에이전트를 묻는다면 전역 설치와 Codex를 선택하세요.
 
-설치된 버전 업데이트:
+### 에이전트에게 설치 요청
+
+터미널 명령을 실행할 수 있는 에이전트에 다음 문장을 보내세요.
+
+```text
+Codex에 Pika UI 스킬을 설치해 주세요. 다음 명령을 실행하세요: npx skills add lbxx-13/pika-ui --skill pika-ui -g -a codex
+```
+
+에이전트를 실행하는 컴퓨터에도 이 비공개 GitHub 저장소에 접근할 권한이 필요합니다. 인증 오류가 발생하면 GitHub 접근을 설정한 뒤 명령을 다시 실행하세요.
+
+### 나중에 업데이트
+
+```bash
+npx skills update pika-ui -g
+```
+
+저장소를 직접 clone해 설치했다면 다음 명령으로 업데이트하세요.
 
 ```bash
 git -C ~/.codex/skills/pika-ui pull --ff-only
 ```
+
+사용자 지정 `CODEX_HOME`을 사용한다면 `~/.codex`를 Codex 홈 디렉터리로 바꾸세요.
+
+## Pika UI 사용법
+
+설치한 뒤 새 Codex 턴에서 `$pika-ui`를 입력해 명시적으로 호출하거나, Pika UI를 사용해 달라고 작업을 설명하세요. 관련 프로젝트, 스크린샷, 브랜드 자료와 제약 조건을 함께 제공하면 기존 기술 스택을 확인하고 필요한 가이드만 읽습니다.
 
 ## 할 수 있는 작업
 

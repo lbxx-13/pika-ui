@@ -12,21 +12,45 @@ Pika UI 是一套为 AI coding agent 准备的跨平台界面设计与实现 ski
 
 React Bits 是可选的 UI 视觉与交互参考，不是技术栈要求。React 项目可按需评估其组件；其他技术栈可以借鉴效果，再按目标平台实现。
 
-## 快速开始
+## 安装
 
-将仓库安装到 Codex skills 目录：
+### 在终端安装
+
+在任意目录运行下面这条命令。它只为 Codex 安装 `pika-ui`，并在所有项目中可用：
 
 ```bash
-git clone https://github.com/lbxx-13/pika-ui.git ~/.codex/skills/pika-ui
+npx skills add lbxx-13/pika-ui --skill pika-ui -g -a codex
 ```
 
-如果你设置了自定义 `CODEX_HOME`，请把仓库放进 `$CODEX_HOME/skills/pika-ui`。私有仓库需要本机已有 GitHub 访问权限。安装后在新的 Codex 对话轮次中使用 `$pika-ui`；也可以直接描述任务，让 agent 按 skill 入口自动选择流程。
+这个 GitHub 仓库目前是私有仓库。运行命令的电脑必须已经有仓库访问权限，例如已配置 Git 凭据、GitHub CLI 登录或 SSH。若命令询问安装范围或 Agent，请选择全局安装和 Codex。
 
-更新已安装版本：
+### 让 Agent 帮你安装
+
+把下面这句话发给能够运行终端命令的 Agent：
+
+```text
+请帮我为 Codex 安装 Pika UI skill，运行：npx skills add lbxx-13/pika-ui --skill pika-ui -g -a codex
+```
+
+运行 Agent 的电脑同样需要有这个私有 GitHub 仓库的访问权限。如果 CLI 提示认证失败，先配置 GitHub 访问权限，再重新运行命令。
+
+### 以后更新
+
+```bash
+npx skills update pika-ui -g
+```
+
+如果之前是手动 clone 安装的，则运行：
 
 ```bash
 git -C ~/.codex/skills/pika-ui pull --ff-only
 ```
+
+如果使用自定义 `CODEX_HOME`，请把命令中的 `~/.codex` 替换为你的 Codex 主目录。
+
+## 使用 Pika UI
+
+安装后开启一个新的 Codex 对话轮次，使用 `$pika-ui` 显式调用；也可以直接描述任务并说明使用 Pika UI。把相关项目、截图、品牌素材和约束一起提供给它。它会先检查项目现有技术栈，再按任务加载对应指南。
 
 ## 可以用它做什么
 
