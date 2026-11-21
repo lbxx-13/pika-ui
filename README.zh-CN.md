@@ -1,0 +1,103 @@
+[English](README.md) · 简体中文 · [日本語](README.ja.md) · [한국어](README.ko.md) · [Deutsch](README.de.md) · [Español](README.es.md)
+
+<p align="center">
+  <img src="assets/pika-ui-logo.png" width="300" alt="Pika UI 彩色皮卡车标志">
+</p>
+
+<h1 align="center">Pika UI</h1>
+
+<p align="center"><strong>从真实任务出发，把界面设计清楚，再按项目技术栈实现。</strong></p>
+
+Pika UI 是一套为 AI coding agent 准备的跨平台界面设计与实现 skill。它帮助你从新界面、改版、截图还原到 UI 评审完成完整交付，适用于 Web、桌面、移动端及其他软件界面。
+
+React Bits 是可选的 UI 视觉与交互参考，不是技术栈要求。React 项目可按需评估其组件；其他技术栈可以借鉴效果，再按目标平台实现。
+
+## 快速开始
+
+将仓库安装到 Codex skills 目录：
+
+```bash
+git clone https://github.com/lbxx-13/pika-ui.git ~/.codex/skills/pika-ui
+```
+
+如果你设置了自定义 `CODEX_HOME`，请把仓库放进 `$CODEX_HOME/skills/pika-ui`。私有仓库需要本机已有 GitHub 访问权限。安装后在新的 Codex 对话轮次中使用 `$pika-ui`；也可以直接描述任务，让 agent 按 skill 入口自动选择流程。
+
+更新已安装版本：
+
+```bash
+git -C ~/.codex/skills/pika-ui pull --ff-only
+```
+
+## 可以用它做什么
+
+- **设计新界面：** 为产品页面、工作区、移动端视图或单个组件确定清楚的视觉方向并实现。
+- **改造现有界面：** 先理解项目已有的页面、设计 token、共享组件与交互，再按任务调整。
+- **还原参考图：** 从布局、比例、字体、颜色和层级开始，在目标视口中逐步还原。
+- **比较设计方向：** 按需生成最多三个真正有差异的候选，并使用本地比较页并排查看。
+- **评审体验：** 检查视觉层级、响应式布局、交互状态、键盘可用性和减少动态效果时的表现。
+- **借鉴动效与素材：** 参考 React Bits 的可选组件示例，或为页面选择合适的图像、图标与动效。
+
+## 示例请求
+
+```text
+$pika-ui 为这款课程预约产品设计一个可预览的落地页。先根据目标用户和课程内容确定方向，再实现桌面与手机布局。
+```
+
+```text
+用 Pika UI 按这张截图还原页面。先检查项目当前使用的框架和样式规范，再实现并检查窄屏布局。
+```
+
+```text
+用 Pika UI 评审这个页面，只列出有截图或代码证据的问题，并给出具体修改建议，不要改文件。
+```
+
+## 工作流程
+
+1. **理解上下文：** 确认目标用户、主要任务、设备、现有页面和项目技术栈。
+2. **做出设计决定：** 明确页面主角、主操作、视觉方向、字体与色彩、主视觉和关键状态。
+3. **按项目实现：** 沿用项目已有组件、设计 token、依赖和平台交互习惯。
+4. **检查真实界面：** 在目标视口检查页面、重要状态与主要操作；根据发现收敛并做减法。
+
+参考资料按任务加载，不需要一次读完。明确的小改动直接执行，不需要走完完整方向流程。
+
+## 文档地图
+
+| 需要处理的任务 | 入口文档 |
+| --- | --- |
+| 新页面、设计改版与实现 | [`references/design-workflow.md`](references/design-workflow.md) |
+| 视觉方向与概念探索 | [`references/design-direction.md`](references/design-direction.md)、[`references/task-explore.md`](references/task-explore.md) |
+| 营销、品牌与发布页面 | [`references/direction-persuasion.md`](references/direction-persuasion.md) |
+| 截图还原、布局与视口 | [`references/layout-and-viewport.md`](references/layout-and-viewport.md) |
+| 字体、颜色、表面与层级 | [`references/visual-language.md`](references/visual-language.md) |
+| 设计 token 与系统维护 | [`references/design-system.md`](references/design-system.md) |
+| 表单、弹窗与复杂状态 | [`references/interaction-states.md`](references/interaction-states.md) |
+| 动效与减少动态效果 | [`references/motion.md`](references/motion.md) |
+| 图片、图标及素材来源 | [`references/media.md`](references/media.md) |
+| UX 流程走查 | [`references/ux-review.md`](references/ux-review.md) |
+| 只读 UI 评审 | [`references/task-review.md`](references/task-review.md)、[`references/review-checklist.md`](references/review-checklist.md) |
+| 候选页面比较 | [`references/style-explorer.md`](references/style-explorer.md) |
+| 浏览器与开发工具 | [`references/tools.md`](references/tools.md) |
+
+### React Bits 的定位
+
+[React Bits](https://reactbits.dev/) 提供文字动画、背景、组件和微交互示例。Pika UI 将它用作可选的视觉与交互灵感来源。需要参考或集成时先查看 [`references/react-bits.md`](references/react-bits.md)：React 源码组件只在目标项目采用 React 且集成合适时直接使用；其他平台只借鉴交互意图和视觉效果。
+
+## 目录
+
+```text
+SKILL.md                         Skill 入口与任务路由
+references/                      按任务读取的设计、实现与评审指南
+assets/style-explorer.html       本地候选页面比较器
+assets/pika-ui-logo.png          Pika UI 皮卡车标志
+scripts/create_style_explorer.py 生成比较页链接的脚本
+```
+
+方向比较器适合查看已经生成的候选页面；它不会替代方向设计，也不会自动生成设计方案。
+
+## 设计边界
+
+- 优先遵循项目的真实品牌、技术栈、组件和平台惯例，不强行套用固定风格。
+- 只使用项目提供或已验证的产品事实，不编造数据、客户评价或功能承诺。
+- React Bits 不是通用组件库或唯一组件来源；跨平台项目按目标技术栈适配。
+- 视觉、交互和功能分别检查；没有实际运行的内容会明确标出未验证范围。
+

@@ -1,4 +1,4 @@
-[English](README.en.md) · [简体中文](README.md) · [日本語](README.ja.md) · 한국어 · [Deutsch](README.de.md) · [Español](README.es.md)
+[English](README.md) · [简体中文](README.zh-CN.md) · [日本語](README.ja.md) · 한국어 · [Deutsch](README.de.md) · [Español](README.es.md)
 
 <p align="center">
   <img src="assets/pika-ui-logo.png" width="300" alt="Pika UI 컬러 픽업트럭 로고">

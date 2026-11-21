@@ -1,4 +1,4 @@
-[English](README.en.md) · [简体中文](README.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · Deutsch · [Español](README.es.md)
+[English](README.md) · [简体中文](README.zh-CN.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · Deutsch · [Español](README.es.md)
 
 <p align="center">
   <img src="assets/pika-ui-logo.png" width="300" alt="Farbiges Pickup-Logo von Pika UI">
