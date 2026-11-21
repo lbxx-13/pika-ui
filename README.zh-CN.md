@@ -8,6 +8,8 @@
 
 <p align="center"><strong>从真实任务出发，把界面设计清楚，再按项目技术栈实现。</strong></p>
 
+<p align="center"><a href="https://pika-ui.mytools.fyi/">访问 Pika UI 官方网站 ↗</a></p>
+
 Pika UI 是一套为 AI coding agent 准备的跨平台界面设计与实现 skill。它帮助你从新界面、改版、截图还原到 UI 评审完成完整交付，适用于 Web、桌面、移动端及其他软件界面。
 
 React Bits 是可选的 UI 视觉与交互参考，不是技术栈要求。React 项目可按需评估其组件；其他技术栈可以借鉴效果，再按目标平台实现。
