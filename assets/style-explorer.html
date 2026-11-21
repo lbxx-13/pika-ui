@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pika UI · 方向比较</title>
+  <style>
+    :root { color-scheme: light; --ink:#19211f; --muted:#727b77; --line:#dfe5e1; --paper:#f4f6f3; --accent:#176b58; --surface:#fff; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:14px/1.45 Inter, ui-sans-serif, system-ui, -apple-system, "PingFang SC", "Noto Sans CJK SC", sans-serif; }
+    header { position:sticky; z-index:2; top:0; display:flex; align-items:center; justify-content:space-between; gap:20px; padding:14px 22px; border-bottom:1px solid var(--line); background:#ffffffed; backdrop-filter:blur(14px); }
+    .brand { display:flex; align-items:center; gap:12px; min-width:0; }
+    .mark { display:grid; width:62px; height:42px; place-items:center; }
+    .mark img { display:block; width:76px; height:50px; object-fit:contain; }
+    h1 { margin:0; font-size:15px; letter-spacing:-.02em; }
+    .sub { color:var(--muted); font-size:12px; }
+    .tools { display:flex; align-items:center; gap:8px; }
+    button, .open { border:1px solid var(--line); border-radius:9px; padding:8px 11px; background:var(--surface); color:var(--ink); font:inherit; cursor:pointer; text-decoration:none; }
+    button[aria-pressed="true"] { border-color:var(--ink); background:var(--ink); color:white; }
+    button:focus-visible, a:focus-visible { outline:3px solid #69b8a4; outline-offset:2px; }
+    main { max-width:1800px; margin:auto; padding:20px 22px 40px; }
+    .intro { display:flex; align-items:end; justify-content:space-between; gap:18px; margin-bottom:16px; }
+    .intro h2 { margin:0 0 4px; font-size:20px; letter-spacing:-.035em; }
+    .intro p { margin:0; color:var(--muted); }
+    .hint { color:var(--muted); font-size:12px; text-align:right; }
+    .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; align-items:start; }
+    .candidate { min-width:0; overflow:hidden; border:1px solid var(--line); border-radius:14px; background:var(--surface); box-shadow:0 2px 8px #17231c08; }
+    .candidate.selected { border-color:var(--accent); box-shadow:0 0 0 2px color-mix(in srgb,var(--accent),transparent 76%); }
+    .meta { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:12px 13px; }
+    .name { min-width:0; }
+    .name strong { display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .name small { display:block; overflow:hidden; color:var(--muted); text-overflow:ellipsis; white-space:nowrap; }
+    .select { flex:none; padding:6px 9px; font-size:12px; }
+    .frame-wrap { display:grid; min-height:300px; place-items:start center; overflow:auto; border-top:1px solid var(--line); background-color:#edf0ed; background-image:linear-gradient(45deg,#e4e8e4 25%,transparent 25%),linear-gradient(-45deg,#e4e8e4 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#e4e8e4 75%),linear-gradient(-45deg,transparent 75%,#e4e8e4 75%); background-size:18px 18px; background-position:0 0,0 9px,9px -9px,-9px 0; }
+    iframe { display:block; width:100%; height:680px; border:0; background:white; }
+    .mobile iframe { width:390px; height:844px; max-width:none; box-shadow:0 0 0 1px #18211b20; }
+    .empty { display:grid; width:100%; min-height:300px; place-items:center; padding:30px; color:var(--muted); text-align:center; }
+    .empty code { color:var(--ink); }
+    .status { min-height:24px; padding:6px 13px 10px; color:var(--accent); font-size:12px; }
+    @media (max-width:1000px) { .grid { grid-template-columns:1fr; } iframe { height:72vh; min-height:520px; } .mobile iframe { height:844px; min-height:0; } .intro { align-items:start; flex-direction:column; } .hint { text-align:left; } }
+    @media (max-width:600px) { header { align-items:flex-start; flex-direction:column; padding:12px 14px; } main { padding:16px 12px 28px; } .tools { width:100%; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand"><div class="mark"><img src="pika-ui-logo.png" alt="Pika UI 皮卡车标志"></div><div><h1>Pika UI <span class="sub">/ 方向比较</span></h1></div></div>
+    <div class="tools" aria-label="比较工具">
+      <button type="button" id="desktop" aria-pressed="true">桌面 1440</button>
+      <button type="button" id="mobile" aria-pressed="false">手机 390</button>
+      <button type="button" id="copy">复制选择</button>
+    </div>
+  </header>
+  <main>
+    <div class="intro">
+      <div><h2 id="title">三个方向，同一任务</h2><p id="description">按真实页面画面比较构图、层级、密度和内容优先级。</p></div>
+      <div class="hint">点击「选这个方向」标记偏好 · ← / → 切换焦点</div>
+    </div>
+    <section class="grid" id="grid" aria-label="设计候选"></section>
+  </main>
+  <script>
+    (() => {
+      const params = new URLSearchParams(location.search);
+      const candidates = ["a", "b", "c"].map((key, i) => ({
+        key,
+        title: params.get(`${key}-title`) || ["方向 A", "方向 B", "方向 C"][i],
+        note: params.get(`${key}-note`) || "添加候选说明",
+        src: params.get(key)
+      }));
+      const grid = document.querySelector("#grid");
+      let selected = -1;
+      let focused = 0;
+      candidates.forEach((item, i) => {
+        const card = document.createElement("article");
+        card.className = "candidate";
+        card.innerHTML = `<div class="meta"><div class="name"><strong></strong><small></small></div><button class="select" type="button">选这个方向</button></div><div class="frame-wrap"><div class="empty">${item.src ? "正在载入候选…" : `给地址加上 <code>?a=页面地址&amp;b=页面地址&amp;c=页面地址</code><br>也可只传一个或两个候选。`}</div></div><div class="status" aria-live="polite"></div>`;
+        card.querySelector("strong").textContent = item.title;
+        card.querySelector("small").textContent = item.note;
+        if (item.src) {
+          const wrap = card.querySelector(".frame-wrap");
+          const frame = document.createElement("iframe");
+          frame.title = item.title;
+          frame.loading = "lazy";
+          frame.src = item.src;
+          wrap.replaceChildren(frame);
+        }
+        card.querySelector(".select").addEventListener("click", () => choose(i));
+        card.addEventListener("mouseenter", () => { focused = i; });
+        grid.append(card);
+      });
+      function choose(i) {
+        selected = i;
+        [...grid.children].forEach((card, n) => {
+          card.classList.toggle("selected", n === i);
+          card.querySelector(".status").textContent = n === i ? "已选择" : "";
+        });
+      }
+      function viewport(mode) {
+        document.querySelector("#desktop").setAttribute("aria-pressed", String(mode === "desktop"));
+        document.querySelector("#mobile").setAttribute("aria-pressed", String(mode === "mobile"));
+        document.querySelectorAll(".frame-wrap").forEach(el => el.classList.toggle("mobile", mode === "mobile"));
+        document.querySelector("#title").textContent = mode === "mobile" ? "窄屏下检查同一方向" : "三个方向，同一任务";
+      }
+      document.querySelector("#desktop").addEventListener("click", () => viewport("desktop"));
+      document.querySelector("#mobile").addEventListener("click", () => viewport("mobile"));
+      document.querySelector("#copy").addEventListener("click", async () => {
+        const text = selected < 0 ? "尚未选择方向" : `我选择${candidates[selected].title}（${candidates[selected].note}），请按这个方向继续。`;
+        try { await navigator.clipboard.writeText(text); document.querySelector("#copy").textContent = "已复制"; }
+        catch { window.prompt("复制这段选择说明：", text); }
+      });
+      document.addEventListener("keydown", event => {
+        if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+        focused = (focused + (event.key === "ArrowRight" ? 1 : -1) + candidates.length) % candidates.length;
+        grid.children[focused].scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+        grid.children[focused].querySelector(".select").focus();
+      });
+    })();
+  </script>
+</body>
+</html>
+
