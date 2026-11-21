@@ -8,6 +8,8 @@
 
 <p align="center"><strong>Mit der echten Aufgabe beginnen, die Oberfläche klar gestalten und passend zum Projekt umsetzen.</strong></p>
 
+<p align="center"><a href="https://pika-ui.mytools.fyi/">Pika UI Website ↗</a></p>
+
 Pika UI ist ein plattformübergreifender Skill für Interface-Design und Implementierung mit KI-Coding-Agenten. Er begleitet den gesamten Weg von neuen Oberflächen und Redesigns bis zur Screenshot-Reproduktion und UI-Prüfung – für Web, Desktop, Mobilgeräte und weitere Softwareoberflächen.
 
 React Bits ist eine optionale Quelle für visuelle und interaktive Ideen, keine Vorgabe für den Tech-Stack. React-Projekte können passende Komponenten prüfen; andere Stacks setzen den Effekt für ihre Zielplattform um.
