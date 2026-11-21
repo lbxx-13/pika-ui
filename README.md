@@ -2,7 +2,7 @@
 
 ![Pika UI pickup truck logo](assets/pika-ui-logo.png)
 
-面向 React 界面的设计与实现工作流，参考 oil-ui 的分主题文档结构，并将 React Bits 作为可选组件来源。Skill 入口是 `SKILL.md`；参考资料按任务加载，不需要一次读完。
+面向 Web、桌面、移动端及其他软件界面的设计与实现工作流，参考 oil-ui 的分主题文档结构。React Bits 仅作为可选的 UI 视觉与交互参考；它提供的 React 组件只适用于匹配的 React 项目，其他技术栈可借鉴效果并按自身平台实现。Skill 入口是 `SKILL.md`；参考资料按任务加载，不需要一次读完。
 
 ## 使用
 
